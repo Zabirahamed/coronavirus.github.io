@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title"></title>
+    <link rel='stylesheet' href='css/bootstrap.min.css' />
+    <link rel='stylesheet' href='css/style.theme.css' />
+    <link rel='stylesheet' href='css/style.css' />
+    <script src='js/jquery.js'></script>
+    <script src='js/app.js'></script>
+</head>
+
+<body>
+
+    <header class="bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark container">
+            <a class="navbar-brand" href="#">Corona Virus Tracker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="our-country.html">Our Country</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container pt-5 text-center pb-3">
+        <h1>Bangladesh Records</h1>
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 text-center col-11 col-md-3 col-lg-3 ml-auto mr-auto totalconfiemed mt-2 mb-2">
+                <h3 class="text-white">Total Confirmed</h3>
+                <h4 class="text-white" id="totalconfirmed"></h4>
+                <h5 class="text-center text-white ">People</h5>
+            </div>
+            <div class="col-sm-11 text-center col-11 col-md-3 col-lg-3 ml-auto mr-auto totaldeaths mt-2 mb-2">
+                <h3 class="text-white">Total Deaths</h3>
+                <h4 class="text-white" id="totaldeaths"></h4>
+                <h5 class="text-center text-white ">People</h5>
+            </div>
+            <div class="col-sm-11 text-center col-11 col-md-3 col-lg-3 ml-auto mr-auto totalrecover mt-2 mb-2">
+                <h3 class="text-white">Total Recovered</h3>
+                <h4 class="text-white" id="totalrecover"></h4>
+                <h5 class="text-center text-white text-white ">People</h5>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <table class="w-100">
+            <tr>
+                <th>New Confirmed</th>
+                <th>New Death</th>
+                <th>New Recover</th>
+                <th>Total Confirmed</th>
+                <th>Total Deaths</th>
+                <th>Total Recovered</th>
+            </tr>
+
+            <tbody id="datafetch">
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+    <script>
+        var api = 'https://api.covid19api.com/summary';
+        $.get('https://api.covid19api.com/summary', function (data) {
+            var global = data.Countries[13];
+
+            var totalconfirmed = global.TotalConfirmed;
+            var totaldeaths = global.TotalDeaths;
+            var totalrecover = global.TotalRecovered;
+
+            var totalconfirmedshow = $("#totalconfirmed").html(totalconfirmed);
+            var totaldeathsshow = $("#totaldeaths").html(totaldeaths);
+            var totalrecovershow = $("#totalrecover").html(totalrecover);
+
+            $("#datafetch").append("<tr>" + "<td>" + global.NewConfirmed + "</td>" + "<td>" + global.NewDeaths + "</td>" + "<td>" + global.NewRecovered + "</td>" + "<td>" + global.TotalConfirmed + "</td>" + "<td>" + global.TotalDeaths + "</td>" + "<td>" + global.TotalRecovered + "</td>" + "</tr>");
+
+        });
+    </script>
+
+    <script>
+        pagetitle("Corona Virus Tracker");
+    </script>
+
+
+
+</body>
+
+</html>

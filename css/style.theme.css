@@ -1,0 +1,25 @@
+.totalconfiemed {
+  background: linear-gradient(45deg, #0062cc, #8b117c);
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+.totaldeaths {
+  background: linear-gradient(45deg, #18d62f, #d4c51a);
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+.totalrecover {
+  padding: 15px 10px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #e81431, #2916caf2);
+}
+table,
+tr,
+th,
+td {
+  border: 2px solid #ddd;
+}
+th,
+td {
+  padding-left: 10px;
+}
