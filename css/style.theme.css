@@ -23,3 +23,6 @@ th,
 td {
   padding-left: 10px;
 }
+.overflow {
+  overflow-x: scroll;
+}
